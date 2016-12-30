@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>รายการอะไหล่รถยนต์</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/screen.css">
+
+    <style>
+        .checkbox-indigo.filled-in[type="checkbox"] + label:after{
+            border: 2px solid #039be5 ;
+            background: transparent;
+        }
+        .checkbox-indigo.filled-in[type="checkbox"]:checked + label:after{
+            background: #039be5 ;
+        }
+        .checkbox-indigo.filled-in[type="checkbox"]:checked + label:before{
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+
+
+        .checkbox-indigo.filled-in[type="number"] + label:after{
+            border: 2px solid #039be5 ;
+            background: transparent;
+        }
+        .checkbox-indigo.filled-in[type="number"]:checked + label:after{
+            background: #039be5 ;
+        }
+        .checkbox-indigo.filled-in[type="number"]:checked + label:before{
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+
+
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+
+
+<header>
+    <nav>
+        <div class="nav-wrapper  blue darken-1">
+            <a href="" class="brand-logo"><i class="material-icons">&nbsp;&nbsp;whatshot</i>&nbsp;</a>
+            <a href="" class="flow-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AutoCar</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="บัญชีผู้ใช้"> <a href=""><i class="material-icons">notifications_none</i></a></li>
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="ออกจากระบบ"><a href="/"><i class="material-icons">lock_open</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+<main >
+
+
+
+
+    <ul id="slide-out" class="side-nav fixed">
+
+        <!-- บัญชีผู้ใช้ -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey">บัญชีผู้ใช้
+                        <i class="left small material-icons ">assignment_ind</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="/adminAdd"  >สร้างบัญชีใช้</a></li>
+                            <li><a href="/adminDelete"  >แก้ไขและลบบัญชีใช้</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+         <!--อะไหล่รถยนต์-->
+        <li><a href="/spare_part" class="waves-effect waves-grey "><i class="small material-icons">settings</i>อะไหล่รถยนต์</a></li>
+
+
+        <!-- รายการซ่อม -->
+        <li class="no-padding active">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey">ซ่อมรถยนต์
+                        <i class="left small material-icons ">builds</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="blue active"><a href="/fix">สั่งซ่อม</a></li>
+                            <li><a href="#">รายการสั่งซ่อม</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- รายได้ -->
+        <li><a href="badges.html"><i class="small material-icons">show_chart</i>รายได้</a></li>
+
+
+
+
+
+
+    </ul>
+
+
+    <div class="row">
+        <div id="admin" class="col s12">
+            <div class="card material-table">
+                <div class="table-header" style="height: 80px">
+                    <span class="table-title">สั่งซ่อม</span>
+                    <span class="new badge amber" style="margin-top: 2.5%; display: none " id="badge"></span>
+                    <div class="actions">
+
+                        <!--<a id="pick" class="modal-trigger waves-effct btn-flate nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="เลือกรายการ"><i class="amber-text material-icons">grade</i></a>-->
+                        <a id="fix"  class="waves-effect btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="ดูรายการอะไหล่"><i class="blue-text material-icons">list</i></a>
+                        <!--<a id="fix" class="btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="สั่งซ่อม"><i class="pink-text material-icons">file_download</i></a>-->
+                        <a id="pick" class="btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="เลือกรายการ"><i class="amber-text material-icons">grade</i></a>
+                    </div>
+                </div>
+                <table id="datatable" >
+                    <thead>
+                    <tr>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 50%;">ชื่ออะไหล่</th>
+                        <th>ประเภทอะไหล่</th>
+                        <!--<th>ยี่ห้อ</th>-->
+                        <th>จำนวน หน่วยนับ</th>
+                        <th>ราคาขาย</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {{range .}}
+                    <tr>
+                        <td>
+                            <p class="center">
+                                <input type="checkbox" class="checkbox-indigo filled-in" id="{{.Id}}" value="{{.Id}}" name="check[]"  />
+                                <label for="{{.Id}}"></label>
+                            </p>
+                        </td>
+                        <td>{{ .Name}}</td>
+                        <td>{{ .TypeText}}</td>
+                        <td>{{ .Amount}} {{.UnitText}}</td>
+                        <td>{{ .Price }} &#3647;</td>
+
+
+                    </tr>
+                    {{end}}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+
+
+
+<!-- Modal Structure -->
+<div id="report" class="modal modal-fixed-footer">
+    <div class="modal-content">
+
+        <div class="row"><h5>รายการอะไหล่รถยนต์ สำหรับสั่งซ่อม</h5></div>
+        <div class="row">
+            <div class="col s5"><h6  id="subHeader"></h6></div>
+            <div class="col s3"><h6>ราคา</h6></div>
+            <div class="col s2"><h6>จำนวน / หน่วย</h6></div>
+            <div class="col s2"><h6></h6></div>
+
+
+        </div>
+
+
+        <ul id="SparePart" class="collection" >
+
+        </ul>
+
+    </div>
+    <div class="modal-footer">
+        <a id="done" href="#!" class="modal-action modal-close waves-effect waves-green  blue-text text-darken-2 btn-flat">สั่งซ่อม</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--<script src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script src="static/js/index.js"></script>
+<script src="static/js/fixCar.js"></script>
+
+<script>
+    var values = [];
+    var table;
+    var item;
+    var index;
+    var cache=[];
+    var id;
+    var ul;
+    var indexOfLI;
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
+

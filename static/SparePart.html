@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>รายการอะไหล่รถยนต์</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/screen.css">
+
+
+
+
+</head>
+
+<body>
+
+
+
+<header>
+    <nav>
+        <div class="nav-wrapper  blue darken-1">
+            <a href="" class="brand-logo"><i class="material-icons">&nbsp;&nbsp;whatshot</i>&nbsp;</a>
+            <a href="" class="flow-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AutoCar</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="บัญชีผู้ใช้"> <a href=""><i class="material-icons">notifications_none</i></a></li>
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="ออกจากระบบ"><a href="/"><i class="material-icons">lock_open</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+<main >
+
+
+
+
+    <ul id="slide-out" class="side-nav fixed">
+
+        <!-- บัญชีผู้ใช้ -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey">บัญชีผู้ใช้
+                        <i class="left small material-icons ">assignment_ind</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="/adminAdd"  >สร้างบัญชีใช้</a></li>
+                            <li><a href="/adminDelete"  >แก้ไขและลบบัญชีใช้</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+         <!--อะไหล่รถยนต์-->
+        <li class="active"><a href="/spare_part" class="waves-effect waves-grey "><i class="small material-icons">settings</i>อะไหล่รถยนต์</a></li>
+
+
+        <!-- รายการซ่อม -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey">ซ่อมรถยนต์
+                        <i class="left small material-icons ">builds</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="/fix">สั่งซ่อม</a></li>
+                            <li><a href="#">รายการสั่งซ่อม</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- รายได้ -->
+        <li><a href="badges.html"><i class="small material-icons">show_chart</i>รายได้</a></li>
+
+
+
+
+
+
+    </ul>
+
+
+    <div class="row">
+        <div id="admin" class="col s12">
+            <div class="card material-table">
+                <div class="table-header">
+                    <span class="table-title">รายการอะไหล่รถยนต์</span>
+                    <div class="actions">
+                        <!--class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="บัญชีผู้ใช้"-->
+                        <a href="#add" class="modal-trigger waves-effect btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="เพิ่มรายการ"><i class="green-text material-icons">add</i></a>
+                        <a id="btnEdit" class="waves-effect btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="แก้ไขรายการ"><i class="orange-text material-icons">edit</i></a>
+                        <a id="btnDelete" class="waves-effect btn-flat tooltipped" data-position="bottom" data-delay="5" data-tooltip="ลบรายการ"><i class="red-text material-icons">delete</i></a>
+                        <a href="#" class="search-toggle waves-effect btn-flat nopadding tooltipped" data-position="bottom" data-delay="5" data-tooltip="ค้นหารายการ"><i class="blue-text material-icons">search</i></a>
+                    </div>
+                </div>
+                <table id="datatable" >
+                    <thead>
+                    <tr>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 50%;">ชื่ออะไหล่</th>
+                        <th>ประเภทอะไหล่</th>
+                        <!--<th>ยี่ห้อ</th>-->
+                        <th>จำนวน หน่วยนับ</th>
+                        <th>ราคาขาย</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {{range .}}
+                    <tr id="row-{{.Id}}">
+                        <td>
+                            <p class="center">
+                                <input type="checkbox" class="filled-in" id="{{.Id}}" value="{{.Id}}" name="check[]"  />
+                                <label for="{{.Id}}"></label>
+                            </p>
+                        </td>
+                        <td>{{ .Name}}</td>
+                        <td>{{ .TypeText}}</td>
+                        <td>{{ .Amount}} {{.UnitText}}</td>
+                        <td>{{ .Price }} &#3647;</td>
+
+
+                    </tr>
+                    {{end}}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+<div id="add" class="modal">
+    <div class="modal-content">
+        <h5>เพิ่มรายการอะไหล่รถยนต์</h5>
+
+        <div class="divider"></div>
+
+        <form method="post" action="/spare_part">
+            <!-- name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nameAdd" type="text" length="35" name="name">
+                    <label for="nameAdd">ชื่ออะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+
+            <!-- amount -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="amountAdd" type="number" length="3" name="amount">
+                    <label for="amountAdd">จำนวนของอะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+            <!-- price -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="priceAdd" type="number" length="7" name="price" >
+                    <label for="priceAdd">ราคาขายอะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+            <!-- type -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="type" id="typeAdd">
+                        <option value="" disabled selected>เลือกประเภท</option>
+                        <option value="0">ไม่มีหน่วย</option>
+                        <option value="1">เครื่องยนต์/ครัทช์</option>
+                        <option value="2">แอร์รถยนต์</option>
+                        <option value="3">เกียร์</option>
+                        <option value="4">เครื่องกรอง</option>
+                    </select>
+                    <label>ประเภทอะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+            <!-- unit -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="unit"id="unitAdd">
+                        <option value="" disabled selected>เลือกหน่วย</option>
+                        <option value="0">ไม่มีหน่วย</option>
+                        <option value="1">ชิ้น</option>
+                        <option value="2">โหล</option>
+                        <option value="3">คู่</option>
+                        <option value="4">กล่อง</option>
+                    </select>
+                    <label>หน่วยนับ</label>
+                </div>
+            </div>
+
+            <!-- submit -->
+            <button class="light-blue darken-1 btn waves-effect waves-light right" type="button" name="action" value="add" id="confirmAdd" >สร้างรายการ
+                <i class="material-icons right ">send</i>
+            </button>
+            <br>
+        </form>
+    </div>
+</div>
+<div id="edit" class="modal">
+    <div class="modal-content">
+        <h5>แก้ไขรายการอะไหล่รถยนต์</h5>
+
+        <div class="divider"></div>
+        <br>
+
+        <form method="post" action="/spare_part">
+            <!-- name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" placeholder="" id="nameEdit" type="text" length="40" name="nameEdit">
+                    <label for="nameEdit">ชื่ออะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+
+            <!-- amount -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" placeholder="" id="amountEdit" type="number" length="3" name="amountEdit">
+                    <label for="amountEdit">จำนวนของอะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+            <!-- price -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" placeholder="" id="priceEdit" type="number" length="7" name="priceEdit">
+                    <label for="priceEdit">ราคาขายอะไหล่รถยนต์</label>
+                </div>
+            </div>
+
+            <!-- type -->
+            <div class="row">
+
+                <!--<div class="input-field col s12">-->
+                    <label>ประเภทอะไหล่รถยนต์</label>
+                    <select name="typeEdit" id="typeEdit" class="browser-default">
+                        <option value="" disabled selected>เลือกประเภท</option>
+                        <option value="0">ไม่มีหน่วย</option>
+                        <option value="1">เครื่องยนต์/ครัทช์</option>
+                        <option value="2">แอร์รถยนต์</option>
+                        <option value="3">เกียร์</option>
+                        <option value="4">เครื่องกรอง</option>
+                    </select>
+                    <!--<label>ประเภทอะไหล่รถยนต์</label>-->
+                <!--</div>-->
+            </div>
+
+            <!-- unit -->
+            <div class="row">
+                <!--<div class="input-field col s12">-->
+                    <label>หน่วยนับ</label>
+                    <select name="unitEdit" id="unitEdit" class="browser-default"  >
+                        <option value="" disabled selected>เลือกหน่วย</option>
+                        <option value="0">ไม่มีหน่วย</option>
+                        <option value="1">ชิ้น</option>
+                        <option value="2">โหล</option>
+                        <option value="3">คู่</option>
+                        <option value="4">กล่อง</option>
+                    </select>
+                    <!--<label>หน่วยนับ</label>-->
+                <!--</div>-->
+            </div>
+
+            <!-- submit -->
+            <button class="orange btn waves-effect waves-light right" type="button" name="action" value="edit" id="confirmEdit">แก้ไขรายการ
+                <i class="material-icons right ">edit</i>
+            </button>
+
+            <br><br><br>
+        </form>
+    </div>
+</div>
+<div id="delete" class="modal">
+    <div class="modal-content">
+        <h5>ลบรายการอะไหล่รถยนต์</h5>
+        <div class="divider"></div>
+
+            <p>คุณต้องการจะลบรายการนี้หรือไม่</p>
+            <!-- submit -->
+            <button class="red btn waves-effect waves-light right" type="button" name="action" value="delete" id="confirmDelete">ลบรายการ
+                <i class="material-icons right ">delete</i>
+            </button>
+            <br>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--<script src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script src="static/js/index.js"></script>
+
+<script>
+    var $id;
+    var $checkbox;
+    var $name;
+    var $type;
+    var $amount;
+    var $unit;
+    var $price;
+    var temp;
+    var table;
+    var row;
+    var tr;
+
+
+
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+
+    });
+    $(document).ready(function() {
+        $('select').material_select();
+
+    });
+    $('#btnDelete').click(function()
+    {
+
+        if($checkbox==true)
+        {
+            $('#delete').openModal();
+
+        }
+    });
+
+
+
+
+    $(document).ready(function()
+    {
+        table = $('#datatable').DataTable();
+
+
+
+        $("#datatable tbody").on( 'click', 'tr', function ()
+        {
+
+            if( $(this).find('input[name="check[]"]').is(":checked") )
+            {
+                $('input[name="check[]"]').prop("checked", false);
+                $(this).find('input[name="check[]"]').prop('checked', true);
+                $checkbox = true;
+                $id=$(this).find('input[name="check[]"]').attr('id');
+            }
+            else
+            {
+                $(this).find('input[name="check[]"]').prop('checked', false);
+                $checkbox = false;
+            }
+
+            temp = table.row(this).data()[3];
+            $name =  table.row(this).data()[1].toString();
+            $type =  table.row(this).data()[2].toString();
+            $amount =  temp.substr( temp,temp.search(" ") );
+            $unit =  temp.substr( temp.search(" "),temp.length );
+            $type = $type.replace(' ','');
+            $unit = $unit.replace(' ','');
+            $price =  table.row(this).data()[4].toString();
+            $price =  parseInt($price.replace('฿',''));
+            row = $(this).closest('tr');
+
+
+
+
+
+
+
+//            table.rows().nodes().to$().find('input[type="checkbox"]').each(function(){ //something to do   });
+
+        } );
+
+    });
+
+
+    $('#confirmDelete').click(function()
+    {
+        $checkbox=false;
+
+        $.ajax
+        ({
+            url: 'http://localhost:3000/spare_part',
+            type: 'post',
+            data: {"id":$id , "action":"delete"},
+            success : function(data)
+            {
+                localStorage.setItem("delete",3);
+                $('#delete').closeModal();
+                window.location.reload();
+//                table.row(row).remove().draw();
+            },
+
+
+            error : function(data){
+                alert("error");
+            },
+
+
+        });
+
+    });
+
+
+    $('#confirmAdd').click(function()
+    {
+
+        $name=document.getElementById("nameAdd").value
+        $amount=document.getElementById("amountAdd").value
+        $price=document.getElementById("priceAdd").value
+        $type=document.getElementById("typeAdd").value
+        $unit=document.getElementById("unitAdd").value
+
+        var $typeText = $("#typeAdd option:selected").text();
+        var $unitText = $("#unitAdd option:selected").text();
+
+        $.ajax
+        ({
+            url: 'http://localhost:3000/spare_part',
+            type: 'post',
+            data: {"action":"add", "name":$name , "amount":$amount , "price":$price , "type":$type , "unit":$unit  },
+            success : function(data)
+            {
+                $('#add').closeModal();
+                var start = data.search('{');
+                var end = data.search('}');
+                data = data.substr(start,end+1);
+                var json = JSON.parse(data);
+                data = json['Id'];
+
+
+
+
+
+
+                if (data!=-1)
+                {
+
+                    localStorage.setItem("add",1);
+                    window.location.reload();
+
+
+//                    Materialize.toast('รายการของอะไหล่รถยนต์ได้ถูกเพิ่ม !', 5000);
+//                    table.row.add
+//                    ([
+//                        '<p class="center"><input type="checkbox" class="filled-in" id="'+data+'" value="'+data+'" name="check[]"  /> <label for="'+data+'"></label></p>',
+//                        $name,
+//                        $typeText,
+//                        $amount+" "+$unitText,
+//                        $price+" ฿"
+//
+//                    ]).draw();
+
+                }
+                else
+                    Materialize.toast('คุณไม่สามารถเพิ่มรายการรถยนต์ได้ กรุณากรอกใหม่ !', 3000);
+
+
+            },
+
+            error : function(data)
+            {
+                Materialize.toast('คุณไม่สามารถเพิ่มรายการรถยนต์ได้ กรุณากรอกใหม่ !', 2000);
+            }
+
+
+        });
+
+    });
+
+
+
+    $('#btnEdit').click(function()
+    {
+
+
+
+        if($checkbox==true)
+        {
+
+            $('#typeEdit option:contains(' + $type + ')').prop({selected: true});
+            $('#unitEdit option:contains(' + $unit + ')').prop({selected: true});
+
+
+            document.getElementById("nameEdit").value=$name;
+            document.getElementById("amountEdit").value=$amount;
+            document.getElementById("priceEdit").value=$price;
+            $('#edit').openModal();
+
+        }
+
+
+
+    });
+
+
+    $('#confirmEdit').click(function()
+    {
+
+        $name=document.getElementById("nameEdit").value
+        $amount=document.getElementById("amountEdit").value
+        $price=document.getElementById("priceEdit").value
+        $type=document.getElementById("typeEdit").value
+        $unit=document.getElementById("unitEdit").value
+
+        var $typeText = $("#typeEdit option:selected").text();
+        var $unitText = $("#unitEdit option:selected").text();
+
+
+
+        $.ajax
+        ({
+            url: 'http://localhost:3000/spare_part',
+            type: 'post',
+            data: { "id":$id , "action":"edit", "name":$name , "amount":$amount , "price":$price , "type":$type , "unit":$unit   },
+            success : function(data)
+            {
+
+                var start = data.search('{');
+                var end = data.search('}');
+                data = data.substr(start,end+1);
+                var json = JSON.parse(data);
+                data = json['Id'];
+                localStorage.setItem("edit",2)
+                window.location.reload();
+
+                $('#edit').closeModal();
+
+                if (data!=-1)
+                {
+                      window.location.reload();
+//                    Materialize.toast('การแก้ไขรายการรถยนต์เสร็จสิ้นแล้ว !', 5000);
+//                    table.row(row).remove();
+//                    table.row.add
+//                    ([
+//                        '<p class="center"><input type="checkbox" class="filled-in" id="'+$id+'" value="'+$id+'" name="check[]"  /> <label for="'+$id+'"></label></p>',
+//                        $name,
+//                        $typeText,
+//                        $amount+" "+$unitText,
+//                        $price+" ฿"
+//
+//                    ]).draw();
+
+                }
+                else
+                    Materialize.toast('คุณไม่สามารถแก้ไขรายการรถยนต์ได้ กรุณากรอกใหม่ !', 5000);
+
+
+
+            },
+
+            error : function(data)
+            {
+                $('#edit').closeModal();
+                Materialize.toast('คคุณไม่สามารถแก้ไขรายการรถยนต์ได้ !', 5000);
+            }
+
+
+        });
+
+    });
+
+
+
+    $(document).ready(function(){
+        //get it if Status key found
+        if(localStorage.getItem("add"))
+        {
+
+            Materialize.toast('รายการของอะไหล่รถยนต์ได้ถูกเพิ่ม !', 5000);
+            localStorage.clear();
+        }
+        else if(localStorage.getItem("edit"))
+        {
+            Materialize.toast('การแก้ไขรายการรถยนต์เสร็จสิ้นแล้ว !', 5000);
+            localStorage.clear();
+        }
+        else if(localStorage.getItem("delete"))
+        {
+            Materialize.toast('รายการได้ถูกลบแล้ว !', 5000);
+            localStorage.clear();
+        }
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
+

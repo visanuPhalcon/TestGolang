@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+
+
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
+
+
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="static/js/materialize.min.js"></script>
+
+
+
+
+        <style>
+            .col.s12.m6{
+                float: none;
+                margin: 5%  auto;
+                width: 300px;
+                /*height: 500px;*/
+            }
+
+            .input-field
+            {
+                margin: 1px auto;
+            }
+
+            .flow-text
+            {
+                margin: 2px auto;
+            }
+            
+            .material-icons
+            {
+                color: #ff9800  ;
+            }
+
+
+
+
+
+
+
+
+
+
+        </style>
+
+
+
+
+    </head>
+
+
+
+<body class="cyan">
+
+
+<main>
+        <div class="row">
+            <nav style="display: none" >
+                <div class="red darken-1 nav-wrapper" >
+                    <h><center>อีเมลหรือรหัสของคุณไม่ถูกต้อง</center></h>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m6 offset-m3 card-panel">
+
+
+                <form  method="post" action="">
+                    <div class="row">
+                        <div class="input-field col s12 center">
+<!--                            <i class="circle responsive-img valign profile-image-login">-->
+                            <br>
+                            <h href="" class="brand-logo"><i class="valign medium material-icons">whatshot</i></h>
+
+                            <p class="center flow-text">AutoCar</p>
+                        </div>
+                    </div>
+
+                    <!-- email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="large material-icons prefix">person</i>
+                            <input id="email" type="text" name="email">
+                            <label for="email" >Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="large material-icons prefix">lock</i>
+                            <input id="password" type="password" name="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+
+                    <!--     check bok  -->
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12  login-text">
+                            <input type="checkbox" id="remember-me" />
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                    </div>
+
+                    <!--  btn login -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button href="/login" class="btn waves-effect waves-light col s12 pink" type="submit" value="Login" name="login" id="login">Login</button>
+                        </div>
+                    </div>
+
+                    <!-- forget password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <p class="margin medium-small"><a href="page-register.html">Forgot password ?</a></p>
+                        </div>
+                    </div>
+
+                    <br>
+                </form>
+
+
+            </div>
+        </div>
+
+</main>
+
+
+
+
+
+</body>
+
+
+
+</html>

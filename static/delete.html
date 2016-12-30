@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="static/js/materialize.min.js"></script>
+
+
+
+</head>
+
+
+<body>
+
+<header>
+    <nav>
+        <div class="nav-wrapper  blue darken-1">
+            <a href="" class="brand-logo"><i class="material-icons">&nbsp;&nbsp;whatshot</i>&nbsp;</a>
+            <a href="" class="flow-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AutoCar</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="บัญชีผู้ใช้"> <a href=""><i class="material-icons">notifications_none</i></a></li>
+                <li class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="ออกจากระบบ"><a href="/"><i class="material-icons">lock_open</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+<main >
+
+    <ul id="slide-out" class="side-nav fixed">
+
+        <!-- บัญชีผู้ใช้ -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey active ">บัญชีผู้ใช้
+                        <i class="left small material-icons ">assignment_ind</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="/adminAdd">สร้างบัญชีใช้</a></li>
+                            <li class="blue active"><a href="/adminDelete">แก้ไขและลบบัญชีใช้</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+
+        <!--อะไหล่รถยนต์-->
+        <li><a href="/spare_part" class="waves-effect waves-grey "><i class="small material-icons">settings</i>อะไหล่รถยนต์</a></li>
+
+
+        <!-- รายการซ่อม -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-grey">ซ่อมรถยนต์
+                        <i class="left small material-icons ">builds</i>
+                        <i class="right small material-icons ">arrow_drop_down</i>
+                    </a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#">สั่งซ่อม</a></li>
+                            <li><a href="#">รายการสั่งซ่อม</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+
+        <!-- รายได้ -->
+        <li><a href="badges.html"><i class="small material-icons">show_chart</i>รายได้</a></li>
+
+
+
+    </ul>
+
+
+
+    <br>
+    <div class="container">
+        <table class="highlight bordered" >
+            <thead>
+            <tr>
+                <th data-field="id">ชื่อ</th>
+                <th data-field="name">อีเมล</th>
+                <th data-field="price">เบอร์โทรศัพท์</th>
+                <th data-field="price" class="center">เลือกรายการ</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            {{range .}}
+            <tr>
+
+                <td>{{ .Name}}</td>
+                <td>{{ .Email}}</td>
+                <td>{{ .PhoneNum}}</td>
+                <td>
+                    <p class="center">
+                    <input type="checkbox" class="filled-in" id="{{.Id}}"  />
+                    <label for="{{.Id}}"></label>
+                    </p>
+
+
+
+                </td>
+
+
+
+
+            </tr>
+            {{end}}
+
+
+
+            </tbody>
+        </table>
+
+        <br><br>
+        <div class="row">
+            <button  class="orange waves-effect waves-light btn"><i class="material-icons right">edit</i>แก้ไข</button >
+            <button  class="red waves-effect waves-light btn"><i class="material-icons right">delete</i>ลบ</button >
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+</body>
+
+
+</html>
